@@ -1,5 +1,5 @@
-using System.IO.Pipes;
-using Unity.VisualScripting;
+
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
@@ -27,7 +27,7 @@ public class CCplayer : MonoBehaviour
     private GameObject currentTarget;
     public Image reticleImage;
     private bool interactPressed;
-    public static event Action<NPCData> OnDialougueRequested;
+    public static event Action<NPCData> OnDialogueRequested;
     //this is our event that the other scripts will be listening for public static event Action<NPCData> OnDialogueRequested;
     private Interactable currentInteractable;
 
@@ -204,9 +204,9 @@ public class CCplayer : MonoBehaviour
         Debug.Log ("CC Colided with: " + hit.gameObject.name);  
     }
 
-    public void RequestDialouge (NPCData npcData)
+    public void RequestDialogue (NPCData npcData)
     {
-        OnDialougueRequested?.Invoke(npcData);
+        OnDialogueRequested?.Invoke(npcData);
 
     }
 
