@@ -43,13 +43,13 @@ public class ProgressManager : MonoBehaviour
 
         if (added)
         {
-            Debug.Log($"Discovery added: {area} ->> {discoveryId} (count:{set.Count})");
-
+            Debug.Log($"Discovery added: {area} -> {discoveryId} (count:{set.Count})");
+            CheckUnlock(area);
         }
 
         else
         {
-            Debug.Log($"Already found: {area} ->> {discoveryId}");
+            Debug.Log($"Already found: {area} -> {discoveryId}");
         }
 
         return added;
