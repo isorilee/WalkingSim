@@ -36,20 +36,21 @@ public class CCplayer : MonoBehaviour
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private void Start()
-    {
-        reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
+    //private void Start()
+    //{
+    //    reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
 
-    }
+    //}
 
     void Awake()
     {
         cc = GetComponent<CharacterController>();
         //optional cursor locking 
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false; 
+        Cursor.visible = false;
 
         //find the reticle 
+        reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
         reticleImage.color = new Color(0, 0, 0, .7f); //slightly transparent black
     }
 
