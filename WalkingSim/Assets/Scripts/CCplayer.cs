@@ -32,10 +32,16 @@ public class CCplayer : MonoBehaviour
     private Interactable currentInteractable;
 
     private bool isRunning;
-    private bool isJumping; 
+    private bool isJumping;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
+
+    }
+
     void Awake()
     {
         cc = GetComponent<CharacterController>();
@@ -44,7 +50,6 @@ public class CCplayer : MonoBehaviour
         Cursor.visible = false; 
 
         //find the reticle 
-        reticleImage = GameObject.Find("Reticle"). GetComponent<Image>();
         reticleImage.color = new Color(0, 0, 0, .7f); //slightly transparent black
     }
 
