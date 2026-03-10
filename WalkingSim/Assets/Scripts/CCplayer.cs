@@ -50,8 +50,11 @@ public class CCplayer : MonoBehaviour
         Cursor.visible = false;
 
         //find the reticle 
-        reticleImage = GameObject.Find("Reticle").GetComponent<Image>();
-        reticleImage.color = new Color(0, 0, 0, .7f); //slightly transparent black
+        if(reticleImage != null )
+        {
+            reticleImage.color = new Color(0, 0, 0, .7f);
+        }
+       
     }
 
     // Update is called once per frame
@@ -146,7 +149,7 @@ public class CCplayer : MonoBehaviour
         // if we didnt hit anything start here 
         //if we hit something tagged interactable 
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 3f))
+        if (Physics.Raycast(ray, out RaycastHit hit, 7f))
         {
             //store the object so we can destroy or do whatever when the player clicks 
 

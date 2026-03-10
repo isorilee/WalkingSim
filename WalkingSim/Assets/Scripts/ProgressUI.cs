@@ -5,18 +5,45 @@ public class ProgressUI : MonoBehaviour
 {
     public TextMeshProUGUI progressText;
 
-    public AreaId areaToTrack = AreaId.Woods;
+    private AreaId currentArea = AreaId.Woods;
+
+    private void Start()
+    {
+        UpdateUI();
+    }
 
     private void Update()
     {
-        if (ProgressManager.instance == null || progressText == null) return;
+        UpdateUI();
+    }
+
+    public void SetArea(AreaId newArea)
+    {
+        currentArea = newArea; 
+        UpdateUI();
+
+    }
+
+
+    private void UpdateUI()
+    {
+        if (progressText == null)
+        {
+            Debug.Log("ProgressUI: progressText is null");
+            return;
+        }
+        if (ProgressManager.instance == null)
+        {
+            progressText.text = "No ProgressManager found";
+            return;
+
+        }
 
         int required = ProgressManager.instance.requiredFindsPerArea;
-        int found = ProgressManager.instance.GetFoundCount(areaToTrack);
+        int found = ProgressManager.instance.GetFoundCount(currentArea);
+        int left = Mathf.Max(0, required - found);
 
-        int left = required - found;
-
-        progressText.text = $"{areaToTrack}:{found}/{required} found ({left} left)";
+        progressText.text = $"{currentArea}:{found}/{required} found ({left} left)";
     }
 
 }
